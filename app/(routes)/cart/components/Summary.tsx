@@ -7,22 +7,34 @@ import {  useSearchParams } from 'next/navigation'
 import React, { useEffect } from 'react'
 import toast from 'react-hot-toast'
 
-function Summary() {
-    const SearchParams = useSearchParams()
+const Summary:React.FC=() =>{
+    
     const items = useCart((state)=>state.items)
     const removeAll = useCart((state)=>state.removeAll)
     const totalPrice = items.reduce((total, item) => {
         return total+Number(item.price)
 },0)
+
 useEffect(()=>{
-    if(SearchParams.get("success")){
-        toast.success("Payment Completed")
-        removeAll()
+    const searchParams = new URLSearchParams(window.location.search);
+
+    if (searchParams.get("success")) {
+        toast.success("Payment Completed");
+        removeAll();
     }
-    if (SearchParams.get("cancelled")) {
-        toast.error("Something went wrong")
+    if (searchParams.get("cancelled")) {
+        toast.error("Something went wrong");
     }
-},[SearchParams,removeAll])
+}, [removeAll]);
+
+//     if(searchParams.get("success")){
+//         toast.success("Payment Completed")
+//         removeAll()
+//     }
+//     if (searchParams.get("cancelled")) {
+//         toast.error("Something went wrong")
+//     }
+// },[searchParams,removeAll])
 const Checkout = async() => {
 const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`,{
     productIds:items.map((item)=>item.id),
