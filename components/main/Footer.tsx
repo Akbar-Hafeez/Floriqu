@@ -4,7 +4,7 @@ import Link from 'next/link'
 const socialLinks = [
   {
     name: 'Instagram',
-    href: 'https://instagram.com',
+    href: 'https://www.instagram.com/hass.anali637?igsh=cHR5eXg3NjR0NjRo',
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true" className="h-6 w-6 fill-current">
         <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5Zm9.5 1.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5A3.5 3.5 0 1 0 12 15.5 3.5 3.5 0 0 0 12 8.5Z" />
@@ -13,7 +13,7 @@ const socialLinks = [
   },
   {
     name: 'TikTok',
-    href: 'https://tiktok.com',
+    href: 'https://www.tiktok.com/@florique.com?_r=1&_t=ZS-95VO5BNo0cJ',
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true" className="h-6 w-6 fill-current">
         <path d="M14.84 3c.36 1.95 1.53 3.9 3.5 5.06 1 .58 2.06.87 3.16.9v3.2a9.3 9.3 0 0 1-3.89-.9 9.36 9.36 0 0 1-1.93-1.24v6.2c0 1.4-.42 2.75-1.21 3.9A6.9 6.9 0 0 1 8.8 23a6.8 6.8 0 0 1-3.23-.81A6.9 6.9 0 0 1 2 16.1a6.92 6.92 0 0 1 10.22-6.08v3.33a3.75 3.75 0 0 0-1.92-.52 3.77 3.77 0 0 0-3.75 3.77c0 2.08 1.68 3.77 3.75 3.77 2.08 0 3.75-1.7 3.75-3.77V3h.79Z" />
