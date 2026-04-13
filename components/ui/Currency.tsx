@@ -9,7 +9,7 @@ import { useEffect, useState } from "react"
     maximumFractionDigits: 0
   })
 interface CurrencyProps{
-    value?:string|number
+    value?:string|number|null
 }
 
 const Currency : React.FC<CurrencyProps> = ({
@@ -24,7 +24,7 @@ value
     }
     return(
         <div className="font-semibold">
-{formatter.format(Number(value))}
+{formatter.format(Number(value ?? 0))}
         </div>
     )
 }
