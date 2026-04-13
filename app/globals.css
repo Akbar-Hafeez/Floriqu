@@ -3,9 +3,31 @@
 @tailwind utilities;
 
 
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+}
+
 html,
 body,
 :root {
- height: 100%;
+  height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(212, 175, 55, 0.14), transparent 32%),
+    linear-gradient(180deg, #171717 0%, #090909 45%, #020202 100%);
+  color: #f5f1e8;
+}
+
+a {
+  transition: color 0.2s ease;
+}
+
+::selection {
+  background: rgba(212, 175, 55, 0.35);
+  color: #fff8e7;
 }
 

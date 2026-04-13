@@ -1,4 +1,5 @@
 import getBillboard from "@/actions/getBillboard";
+import getCategories from "@/actions/getCategories";
 import getProducts from "@/actions/getProduct";
 import BillboardComponent from "@/components/ui/Billboard";
 import Container from "@/components/ui/Container";
@@ -6,7 +7,10 @@ import ProductList from "@/components/ui/ProductList";
 
 export const revalidate = 0
 export default async function Home() {
-const billboard = await getBillboard('66901d8c8caf75eada4a15d8')
+const categories = await getCategories()
+const billboard =
+  categories.find((category) => category.billboard?.id)?.billboard ??
+  await getBillboard('69da46fd47e6253fdeedd1c1')
 const products = await getProducts({isFeatured:true})
   return (
     <Container>

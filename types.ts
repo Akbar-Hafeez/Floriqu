@@ -14,6 +14,7 @@ export interface Product {
      category:Category;
      name:string;
      price:string;
+     discountedPrice?:string | null;
      isFeatured:boolean;
      size:Size;
      color:Color;

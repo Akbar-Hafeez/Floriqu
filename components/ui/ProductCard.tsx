@@ -3,11 +3,11 @@ import { Product } from "@/types"
 import Image from "next/image"
 import IconButton from "./IconButton"
 import { Expand, ShoppingCart } from "lucide-react"
-import Currency from "./Currency"
 import { useRouter } from "next/navigation"
 import { MouseEventHandler } from "react"
 import usePreviewModal from "@/hooks/usePreviewModal"
 import useCart from "@/hooks/useCart"
+import ProductPrice from "./ProductPrice"
 
 
 
@@ -32,8 +32,8 @@ event.stopPropagation()
 cart.addItem(data)
     }
     return(
-        <div onClick={handleClick} className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4">
-            <div className="aspect-square rounded-xl bg-gray-100 relative">
+        <div onClick={handleClick} className="group cursor-pointer rounded-2xl border border-white/10 bg-white/5 p-3 space-y-4 shadow-[0_20px_60px_rgba(0,0,0,0.22)] backdrop-blur-sm transition hover:border-amber-400/40 hover:bg-white/[0.07]">
+            <div className="aspect-square rounded-xl bg-stone-900 relative overflow-hidden">
                 <Image
                 src={data?.images?.[0]?.url}
                 fill
@@ -42,17 +42,17 @@ cart.addItem(data)
                 />
                 <div className="opacity-0 group-hover:opacity-100 transition w-full absolute px-6 bottom-5">
 <div className="flex justify-center gap-x-6">
-<IconButton onClick={onPreview} icon={<Expand className="text-gray-600" size={20}/>}/>
-<IconButton onClick={addToCart} icon={<ShoppingCart className="text-gray-600" size={20}/>}/>
+<IconButton onClick={onPreview} icon={<Expand className="text-stone-50" size={20}/>}/>
+<IconButton onClick={addToCart} icon={<ShoppingCart className="text-stone-50" size={20}/>}/>
 </div>
                 </div>
             </div>
             <div >
-<p className="font-semibold text-lg">{data.name}</p>
-<p className="text-gray-500 text-sm">{data.category?.name}</p>
+<p className="font-semibold text-lg text-stone-100">{data.name}</p>
+<p className="text-stone-400 text-sm">{data.category?.name}</p>
             </div>
             <div className="flex items-center justify-between">
-<Currency value={data?.price}/>
+<ProductPrice price={data?.price} discountedPrice={data?.discountedPrice}/>
             </div>
         </div>
     )

@@ -27,11 +27,12 @@ const CategoryPage:React.FC<CategoryPageProps>=async({
         colorId:searchParams.colorId,
         sizeId:searchParams.sizeId
     })
+    const categoryProducts = products.filter((item) => item.category?.id === params.categoryId)
     const sizes = await getSizes()
     const colors = await getColors()
     const category = await getCategory(params.categoryId)
     return(
-        <div className="bg-white">
+        <div className="bg-transparent">
             <Container>
                 <BillboardComponent data={category.billboard}/>
 <div className="px-4 sm:px-6 lg:px-8 pb-24">
@@ -50,9 +51,9 @@ const CategoryPage:React.FC<CategoryPageProps>=async({
     />
 </div>
 <div className="mt-6 lg:col-span-4 lg:mt-0">
-{products.length === 0 && <NoResult/>}
+{categoryProducts.length === 0 && <NoResult/>}
 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-{products.map((item)=>(
+{categoryProducts.map((item)=>(
     <ProductCard
     data={item}
     key={item.id}

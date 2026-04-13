@@ -9,8 +9,8 @@ import ToastProvider from "@/providers/ToastProvider";
 const font = Urbanist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Store",
-  description: "Store",
+  title: "Best Perfumes | Floriqu",
+  description: "Get the best and premium perfumues on floriqu.com",
 };
 
 export default function RootLayout({
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={font.className}>
+      <body className={`${font.className} min-h-screen bg-black text-stone-100 antialiased`}>
         <ModalProvider/>
         <ToastProvider/>
         <Navbar/>

@@ -1,82 +1,102 @@
+import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+
+const socialLinks = [
+  {
+    name: 'Instagram',
+    href: 'https://instagram.com',
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true" className="h-6 w-6 fill-current">
+        <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5Zm9.5 1.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5A3.5 3.5 0 1 0 12 15.5 3.5 3.5 0 0 0 12 8.5Z" />
+      </svg>
+    ),
+  },
+  {
+    name: 'TikTok',
+    href: 'https://tiktok.com',
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true" className="h-6 w-6 fill-current">
+        <path d="M14.84 3c.36 1.95 1.53 3.9 3.5 5.06 1 .58 2.06.87 3.16.9v3.2a9.3 9.3 0 0 1-3.89-.9 9.36 9.36 0 0 1-1.93-1.24v6.2c0 1.4-.42 2.75-1.21 3.9A6.9 6.9 0 0 1 8.8 23a6.8 6.8 0 0 1-3.23-.81A6.9 6.9 0 0 1 2 16.1a6.92 6.92 0 0 1 10.22-6.08v3.33a3.75 3.75 0 0 0-1.92-.52 3.77 3.77 0 0 0-3.75 3.77c0 2.08 1.68 3.77 3.75 3.77 2.08 0 3.75-1.7 3.75-3.77V3h.79Z" />
+      </svg>
+    ),
+  },
+]
+
+const informationLinks = [
+  { name: 'About Us', href: '#' },
+  { name: 'Terms & Conditions', href: '#' },
+  { name: 'Privacy Policy', href: '#' },
+]
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 p-10 font-[sans-serif] tracking-wide">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div className="lg:flex lg:items-center">
-          <Link href="javascript:void(0)">
-            {/* <img src="https://readymadeui.com/readymadeui-light.svg" alt="logo" className="w-52" /> */}
-          </Link>
+    <footer className="mt-16 border-t border-amber-400/15 bg-gradient-to-b from-stone-950 via-black to-stone-950">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.4fr_0.8fr_1fr_1fr]">
+          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.22)]">
+            <Link href="/" className="inline-flex">
+              <Image src="/logo.png" alt="Floriqu logo" width={230} height={36} className="h-auto w-[190px] sm:w-[230px]" />
+            </Link>
+            <p className="mt-5 max-w-md text-sm leading-7 text-stone-400">
+              Elevated fragrance selections with a darker, refined storefront aesthetic designed to feel premium on every screen.
+            </p>
+            <div className="mt-6 flex items-center gap-4">
+              {socialLinks.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-amber-400/25 bg-black/70 text-stone-300 transition hover:border-amber-300/50 hover:text-amber-200"
+                >
+                  <span className="sr-only">{item.name}</span>
+                  {item.icon}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="lg:pl-6">
+            <h4 className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-200">Contact</h4>
+            <ul className="mt-5 space-y-4 text-sm text-stone-300">
+              <li>
+                <Link href="mailto:hhassanalk@gmail.com" className="transition hover:text-amber-200">
+                  hhassanalk@gmail.com
+                </Link>
+              </li>
+              <li>
+                <Link href="https://wa.me/923171032052" target="_blank" className="transition hover:text-amber-200">
+                  03171032052
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-200">Information</h4>
+            <ul className="mt-5 space-y-4 text-sm text-stone-300">
+              {informationLinks.map((item) => (
+                <li key={item.name}>
+                  <Link href={item.href} className="transition hover:text-amber-200">
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="rounded-3xl border border-amber-400/15 bg-gradient-to-br from-amber-300/10 via-transparent to-transparent p-6">
+            <h4 className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-200">Floriqu</h4>
+            <p className="mt-4 text-sm leading-7 text-stone-400">
+              Distinctive scents, premium presentation, and a polished shopping experience built around modern fragrance lovers.
+            </p>
+          </div>
         </div>
 
-        <div className="lg:flex lg:items-center">
-          <ul className="flex space-x-6">
-            <li>
-              <Link href="javascript:void(0)">
-                <svg xmlns="http://www.w3.org/2000/svg" className="fill-gray-300 hover:fill-white w-7 h-7" viewBox="0 0 24 24">
-                  <path fill-rule="evenodd"
-                    d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7v-7h-2v-3h2V8.5A3.5 3.5 0 0 1 15.5 5H18v3h-2a1 1 0 0 0-1 1v2h3v3h-3v7h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"
-                    clip-rule="evenodd" />
-                </svg>
-              </Link>
-            </li>
-            <li>
-              <Link href="javascript:void(0)">
-                <svg xmlns="http://www.w3.org/2000/svg" className="fill-gray-300 hover:fill-white w-7 h-7" viewBox="0 0 24 24">
-                  <path fill-rule="evenodd"
-                    d="M21 5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5zm-2.5 8.2v5.3h-2.79v-4.93a1.4 1.4 0 0 0-1.4-1.4c-.77 0-1.39.63-1.39 1.4v4.93h-2.79v-8.37h2.79v1.11c.48-.78 1.47-1.3 2.32-1.3 1.8 0 3.26 1.46 3.26 3.26zM6.88 8.56a1.686 1.686 0 0 0 0-3.37 1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68zm1.39 1.57v8.37H5.5v-8.37h2.77z"
-                    clip-rule="evenodd" />
-                </svg>
-              </Link>
-            </li>
-            <li>
-              <Link href="javascript:void(0)">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" className="fill-gray-300 hover:fill-white w-7 h-7"
-                  viewBox="0 0 24 24">
-                  <path
-                    d="M22.92 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.83 4.5 17.72 4 16.46 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98-3.56-.18-6.73-1.89-8.84-4.48-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.9 20.29 6.16 21 8.58 21c7.88 0 12.21-6.54 12.21-12.21 0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z" />
-                </svg>
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="text-lg font-semibold mb-6 text-white">Contact Us</h4>
-          <ul className="space-y-4">
-            <li>
-              <Link href="javascript:void(0)" className="text-gray-300 hover:text-white text-sm">Email</Link>
-            </li>
-            <li>
-              <Link href="javascript:void(0)" className="text-gray-300 hover:text-white text-sm">Phone</Link>
-            </li>
-            <li>
-              <Link href="javascript:void(0)" className="text-gray-300 hover:text-white text-sm">Address</Link>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="text-lg font-semibold mb-6 text-white">Information</h4>
-          <ul className="space-y-4">
-            <li>
-              <Link href="javascript:void(0)" className="text-gray-300 hover:text-white text-sm">About Us</Link>
-            </li>
-            <li>
-              <Link href="javascript:void(0)" className="text-gray-300 hover:text-white text-sm">Terms &amp; Conditions</Link>
-            </li>
-            <li>
-              <Link href="javascript:void(0)" className="text-gray-300 hover:text-white text-sm">Privacy Policy</Link>
-            </li>
-          </ul>
+        <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm text-stone-500 sm:flex-row sm:items-center sm:justify-between">
+          <p>&copy; 2026 floriqu.com. All rights reserved.</p>
+          <p className="text-stone-600">Crafted for a premium perfume storefront.</p>
         </div>
       </div>
-
-      <p className='text-gray-300 text-sm mt-10'>© 2023<Link href='https://readymadeui.com/' target='_blank'
-        className="hover:underline mx-1">ReadymadeUI</Link>All Rights Reserved.
-      </p>
     </footer>
   )
 }

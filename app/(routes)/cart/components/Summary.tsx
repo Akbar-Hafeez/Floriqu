@@ -1,18 +1,21 @@
 "use client"
 import Button from '@/components/ui/Button'
-import Currency from '@/components/ui/Currency'
+import ProductPrice from '@/components/ui/ProductPrice'
 import useCart from '@/hooks/useCart'
-import axios from 'axios'
-import {  useSearchParams } from 'next/navigation'
 import React, { useEffect } from 'react'
 import toast from 'react-hot-toast'
+import { useRouter } from 'next/navigation'
 
 const Summary:React.FC=() =>{
     
     const items = useCart((state)=>state.items)
     const removeAll = useCart((state)=>state.removeAll)
+    const router = useRouter()
     const totalPrice = items.reduce((total, item) => {
-        return total+Number(item.price)
+        return total + Number(item.discountedPrice || item.price)
+},0)
+    const totalOriginalPrice = items.reduce((total, item) => {
+        return total + Number(item.price)
 },0)
 
 useEffect(()=>{
@@ -36,23 +39,25 @@ useEffect(()=>{
 //     }
 // },[searchParams,removeAll])
 const Checkout = async() => {
-const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`,{
-    productIds:items.map((item)=>item.id),
-})
-window.location = response.data.url
+// Stripe checkout is no longer used.
+// const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`,{
+//     productIds:items.map((item)=>item.id),
+// })
+// window.location = response.data.url
+router.push('/payment')
 }
   return (
     <div className='
-    mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8
+    mt-16 rounded-2xl border border-white/10 bg-white/5 px-4 py-6 shadow-[0_20px_60px_rgba(0,0,0,0.22)] backdrop-blur-sm sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8
     '>
-    <h2 className='text-lg font-medium text-gray-900'>Order Summary</h2>
+    <h2 className='text-lg font-medium text-stone-100'>Order Summary</h2>
     <div className='mt-6 space-y-4'>
-<div className='flex items-center justify-between border-t border-gray-200 pt-4'>
-<div className='text-base font-medium text-gray-900'>
+<div className='flex items-center justify-between border-t border-white/10 pt-4'>
+<div className='text-base font-medium text-stone-200'>
 Order Total
 
 </div>
-<Currency value={totalPrice}/>
+<ProductPrice price={totalOriginalPrice} discountedPrice={totalPrice}/>
 </div>
     </div>
     <Button disabled={items.length === 0} onClick={Checkout} className='w-full mt-6'>

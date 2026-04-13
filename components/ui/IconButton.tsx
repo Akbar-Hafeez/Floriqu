@@ -13,7 +13,7 @@ const IconButton:React.FC<IconButtonProps> = ({
   return (
     <button
     onClick={onClick}
-    className={cn("rounded-full flex items-center justify-center bg-white border shadow-md p-2 hover:scale-110 transition ",className)}
+    className={cn("rounded-full flex items-center justify-center border border-white/10 bg-black/70 text-stone-100 shadow-md p-2 transition hover:scale-110 hover:border-amber-400/40 hover:text-amber-200",className)}
     >
 {icon}
     </button>
